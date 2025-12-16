@@ -1,0 +1,723 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sandcastle Fitness — Free Pass + Referrals</title>
+  <meta name="description" content="Claim a free pass at Sandcastle Fitness. Members can create a personal referral link in seconds." />
+  <meta name="theme-color" content="#0b0f0c" />
+  <style>
+    :root {
+      --bg: #0b0f0c;
+      --card: rgba(255,255,255,0.06);
+      --stroke: rgba(255,255,255,0.14);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.66);
+      --accent: #32cd32;
+      --radius: 22px;
+      --shadow: 0 20px 70px rgba(0,0,0,.55);
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color: var(--text);
+      background:
+        radial-gradient(900px 650px at 12% 10%, rgba(50,205,50,0.18), transparent 60%),
+        radial-gradient(700px 520px at 88% 20%, rgba(50,205,50,0.10), transparent 60%),
+        linear-gradient(180deg, #060806, var(--bg));
+      overflow-x: hidden;
+    }
+    a { color: inherit; }
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 26px 16px 34px; }
+    .top {
+      display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap;
+      margin-bottom: 18px;
+    }
+    .brand { display:flex; align-items:center; gap:12px; }
+    .logo {
+      width: 46px;
+      height: 46px;
+      border-radius: 16px;
+      object-fit: contain;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 6px;
+      box-shadow: 0 18px 45px rgba(0,0,0,.22);
+    }
+    .mark {
+
+      width: 46px; height: 46px; border-radius: 16px;
+      background: rgba(255,255,255,0.06);
+      box-shadow: 0 18px 45px rgba(50,205,50,.16);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+    .brand h1 {
+      margin:0; font-size: 15px; letter-spacing: 0.10em; text-transform: uppercase; font-weight: 950;
+    }
+    .brand p { margin: 3px 0 0; font-size: 12px; color: var(--muted); }
+    .nav {
+      display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;
+    }
+    .btn {
+      display:inline-flex; align-items:center; justify-content:center;
+      padding: 10px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      text-decoration:none;
+      font-weight: 900;
+      font-size: 13px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: transform .10s ease, background .12s ease, border-color .12s ease;
+    }
+    .btn:hover {
+      background: rgba(255,255,255,0.09);
+      border-color: rgba(255,255,255,0.22);
+      transform: translateY(-1px);
+    }
+    .btn.primary {
+      border-color: rgba(50,205,50,0.55);
+      background: linear-gradient(135deg, rgba(50,205,50,0.90), rgba(50,205,50,0.30));
+      color: #061006;
+    }
+    .hero {
+      display:grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 16px;
+      align-items: stretch;
+      margin-bottom: 14px;
+    }
+    @media (max-width: 980px) {
+      .hero { grid-template-columns: 1fr; }
+    }
+    .heroCard {
+      position: relative;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,0.14);
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.04));
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      padding: 18px;
+      backdrop-filter: blur(10px);
+    }
+    .heroCard:before {
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(600px 260px at 20% 0%, rgba(50,205,50,0.22), transparent 55%);
+      pointer-events:none;
+    }
+    .kicker {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 11px;
+      color: rgba(255,255,255,0.72);
+      font-weight: 900;
+    }
+    .title {
+      margin: 10px 0 10px;
+      font-size: 38px;
+      line-height: 1.05;
+      font-weight: 950;
+      letter-spacing: -0.02em;
+    }
+    @media (max-width: 520px) {
+      .title { font-size: 32px; }
+    }
+    .sub {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 14px;
+      max-width: 60ch;
+    }
+    .pill {
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      margin-top: 12px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(0,0,0,0.18);
+      color: rgba(255,255,255,0.88);
+      font-weight: 900;
+      font-size: 12px;
+    }
+    .pill .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(50,205,50,0.12);
+    }
+    .grid {
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 16px;
+    }
+    @media (max-width: 980px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+    .card {
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.06);
+      box-shadow: var(--shadow);
+      padding: 18px;
+      backdrop-filter: blur(10px);
+    }
+    h2 {
+      margin: 0 0 6px;
+      font-size: 18px;
+      font-weight: 950;
+      letter-spacing: -0.01em;
+    }
+    p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 13px;
+    }
+    .row {
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+    @media (max-width: 640px) {
+      .row { grid-template-columns: 1fr; }
+    }
+    label {
+      display:block;
+      margin-top: 12px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.72);
+      font-weight: 900;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 12px 12px;
+      margin-top: 8px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(0,0,0,0.22);
+      color: var(--text);
+      outline: none;
+      resize: vertical;
+    }
+    input:focus, textarea:focus {
+      border-color: rgba(50,205,50,0.65);
+      box-shadow: 0 0 0 4px rgba(50,205,50,0.10);
+    }
+    .cta {
+      margin-top: 14px;
+      width: 100%;
+      padding: 13px 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(50,205,50,0.55);
+      background: linear-gradient(135deg, rgba(50,205,50,0.92), rgba(50,205,50,0.32));
+      color: #061006;
+      font-weight: 950;
+      cursor: pointer;
+      transition: transform .10s ease;
+    }
+    .cta:hover { transform: translateY(-1px); }
+    .ghost {
+      margin-top: 10px;
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      font-weight: 900;
+      cursor: pointer;
+    }
+    .out {
+      margin-top: 14px;
+      padding: 14px;
+      border-radius: 16px;
+      border: 1px dashed rgba(255,255,255,0.22);
+      background: rgba(0,0,0,0.14);
+      display:none;
+    }
+    code {
+      display:block;
+      margin-top: 10px;
+      padding: 12px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.14);
+      word-break: break-all;
+      font-weight: 950;
+      letter-spacing: 0.02em;
+    }
+    .kpis {
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .kpi {
+      padding: 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(0,0,0,0.16);
+    }
+    .kpi b { display:block; font-size: 14px; margin-bottom: 6px; }
+    .kpi span { color: var(--muted); font-size: 12px; }
+    .tiny { margin-top: 10px; font-size: 12px; color: rgba(255,255,255,0.62); line-height: 1.5; }
+    .divider {
+      height: 1px;
+      margin: 18px 0 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.16), transparent);
+    }
+    details {
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(0,0,0,0.14);
+      border-radius: 16px;
+      padding: 12px 14px;
+    }
+    details + details { margin-top: 10px; }
+    summary {
+      cursor: pointer;
+      font-weight: 950;
+      color: rgba(255,255,255,0.88);
+      list-style: none;
+    }
+    summary::-webkit-details-marker { display:none; }
+    .footer {
+      margin-top: 18px;
+      text-align:center;
+      color: rgba(255,255,255,0.55);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div class="brand">
+        <img class="logo" src="assets/sandcastle-logo.png" alt="Sandcastle Fitness logo" />
+        <div>
+          <h1>Sandcastle Fitness</h1>
+          <p>Free pass + refer a friend</p>
+        </div>
+      </div>
+      <div class="nav">
+        <a class="btn" href="#freepass">Claim free pass</a>
+        <a class="btn primary" href="#referrals">Get my referral link</a>
+        <a class="btn" href="#leaderboard">Leaderboard</a>
+        <a class="btn" href="#faq">FAQ</a>
+      </div>
+    </div>
+
+    <div class="hero">
+      <div class="heroCard">
+        <div class="kicker">Try Sandcastle</div>
+        <div class="title">Claim a free pass.<br/>Bring a friend.</div>
+        <p class="sub">Grab a free pass and we’ll text you quickly to book your first visit. If a friend sent you this page, their referral is automatically attached.</p>
+        <div class="pill" id="refPill" style="display:none;"><span class="dot"></span><span id="refText">Referral applied</span></div>
+        <div class="pill" id="successPill" style="display:none;"><span class="dot"></span><span>Request received — we’ll text you shortly.</span></div>
+      </div>
+
+      <div class="heroCard">
+        <div class="kicker">Member referrals</div>
+        <div class="title" style="font-size:28px; line-height:1.12;">Get your personal link in seconds.</div>
+        <p class="sub">Enter your email or phone once and you’ll get a link you can share. When friends claim a free pass, you’re credited automatically.</p>
+        <div class="divider"></div>
+        <div class="tiny"><b>Tip:</b> paste the link in your IG bio, send it in a text, or drop it in your stories.</div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <section class="card" id="freepass">
+        <h2>Claim a free pass</h2>
+        <p>We’ll text you quickly to set up your first visit.</p>
+
+        <form name="sandcastle-free-pass" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/?success=1#freepass" id="freePassForm">
+          <input type="hidden" name="form-name" value="sandcastle-free-pass" />
+          <input type="hidden" name="ref_code" id="fp_ref_code" />
+          <input type="hidden" name="ref_first" id="fp_ref_first" />
+          <input type="hidden" name="ref_last" id="fp_ref_last" />
+          <input type="hidden" name="click_id" id="fp_click_id" />
+          <input type="hidden" name="landing_url" id="fp_landing_url" />
+          <input type="hidden" name="first_seen" id="fp_first_seen" />
+
+          <p style="display:none;">
+            <label>Don’t fill this out: <input name="bot-field" /></label>
+          </p>
+
+          <div class="row">
+            <div>
+              <label>Full name</label>
+              <input name="name" autocomplete="name" placeholder="Your name" required />
+            </div>
+            <div>
+              <label>Phone number</label>
+              <input name="phone" autocomplete="tel" placeholder="604 555 1234" required />
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label>Email (optional)</label>
+              <input name="email" autocomplete="email" placeholder="you@email.com" />
+            </div>
+            <div>
+              <label>Goal (optional)</label>
+              <input name="goal" placeholder="Strength, weight loss, PT, classes…" />
+            </div>
+          </div>
+
+          <button class="cta" type="submit">Claim my free pass</button>
+          <div class="tiny">No referral? No problem — you can still claim a pass.</div>
+        </form>
+      </section>
+
+      <section class="card" id="referrals">
+        <h2>Get my referral link</h2>
+        <p>Create your personal link — share it with friends.</p>
+
+        <label>Your name (optional)</label>
+        <input id="m_name" placeholder="Ex: Katie" />
+
+        <label>Email or phone</label>
+        <input id="m_contact" placeholder="Ex: katie@email.com or 6045551234" />
+
+        <!-- honeypot -->
+        <div style="position:absolute; left:-9999px; top:-9999px; height:1px; width:1px; overflow:hidden;">
+          <label>Website</label>
+          <input id="m_website" autocomplete="off" />
+        </div>
+
+        <button class="cta" id="m_issue">Create my link</button>
+
+        <div class="out" id="m_out">
+          <div class="tiny"><b>Your link</b></div>
+          <code id="m_link"></code>
+
+          <div class="row">
+            <button class="ghost" id="m_copy" type="button">Copy</button>
+            <button class="ghost" id="m_share" type="button">Share</button>
+          </div>
+
+          <div class="kpis" id="m_kpis" style="display:none;">
+            <div class="kpi"><b id="m_clicks">0</b><span>Link clicks</span></div>
+            <div class="kpi"><b id="m_leads">0</b><span>Free pass requests</span></div>
+            <div class="kpi"><b id="m_last">—</b><span>Last activity</span></div>
+            <div class="kpi"><b id="m_code">—</b><span>Your code</span></div>
+          </div>
+
+          <div class="tiny" id="m_note"></div>
+        </div>
+
+      </section>
+
+</section>
+    </div>
+
+    
+      <section class="card" id="faq">
+        <h2>Quick questions</h2>
+        <div style="margin-top:10px;">
+          <details>
+            <summary>Do I get a new link every time?</summary>
+            <div class="tiny">No — if you use the same email/phone, you’ll get the same link again.</div>
+          </details>
+          <details>
+            <summary>How do I know it tracked?</summary>
+            <div class="tiny">Tell your friend to click your link right before submitting the free pass form.</div>
+          </details>
+          <details>
+            <summary>Can I share the same link anywhere?</summary>
+            <div class="tiny">Yes — text, IG bio, stories, DMs, anywhere.</div>
+          </details>
+        </div>
+      
+      <section class="card" id="leaderboard">
+        <h2>Leaderboard</h2>
+        <p>Top referrers based on free pass requests.</p>
+
+        <div class="row" style="margin-top:12px;">
+          <button class="ghost" id="lb_sort_leads" type="button">Sort by referrals</button>
+          <button class="ghost" id="lb_sort_clicks" type="button">Sort by clicks</button>
+        </div>
+
+        <div class="out" id="lb_out" style="display:block; margin-top:12px;">
+          <div class="tiny" id="lb_status">Top referrers (example data)</div>
+          <div style="overflow:auto; margin-top:10px;">
+            <table style="width:100%; border-collapse:collapse; min-width:520px;">
+              <thead>
+                <tr style="text-align:left; color:rgba(255,255,255,0.75); font-size:12px;">
+                  <th style="padding:10px 8px; border-bottom:1px solid rgba(255,255,255,0.14);">Rank</th>
+                  <th style="padding:10px 8px; border-bottom:1px solid rgba(255,255,255,0.14);">Member</th>
+                  <th style="padding:10px 8px; border-bottom:1px solid rgba(255,255,255,0.14);">Referrals</th>
+                  <th style="padding:10px 8px; border-bottom:1px solid rgba(255,255,255,0.14);">Clicks</th>
+                  <th style="padding:10px 8px; border-bottom:1px solid rgba(255,255,255,0.14);">Code</th>
+                </tr>
+              </thead>
+              <tbody id="lb_rows"></tbody>
+            </table>
+          </div>
+          <div class="tiny" style="margin-top:10px;">Want to be on the board? Create your link above and start sharing.</div>
+        </div>
+      </section>
+
+    <div class="footer">
+      © 2025 Sandcastle Fitness
+    </div>
+  </div>
+
+  <script>
+    // --- helpers ---
+    function getCookie(name) {
+      const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+      return match ? decodeURIComponent(match[2]) : "";
+    }
+
+    function safeCode(s) {
+      return (s || "").toString().trim().replace(/[^a-zA-Z0-9_-]/g, "").slice(0, 40);
+    }
+
+    async function copyText(text) {
+      await navigator.clipboard.writeText(text);
+      alert("Copied!");
+    }
+
+    async function tryShare(title, text, url) {
+      if (navigator.share) {
+        try {
+          await navigator.share({ title, text, url });
+          return;
+        } catch (e) {}
+      }
+      await copyText(url);
+    }
+
+    function show(el) { el.style.display = ""; }
+    function hide(el) { el.style.display = "none"; }
+
+    // --- success banner ---
+    (function() {
+      const params = new URLSearchParams(location.search);
+      if (params.get("success") === "1") {
+        const pill = document.getElementById("successPill");
+        show(pill);
+      }
+    })();
+
+    // --- referral pill + hidden fields (cookie + URL fallback) ---
+    (function() {
+      const params = new URLSearchParams(location.search);
+      const urlRef = safeCode(params.get("ref"));
+
+      // first_seen tracking
+      const firstKey = "sc_first_seen";
+      let firstSeen = localStorage.getItem(firstKey);
+      if (!firstSeen) {
+        firstSeen = new Date().toISOString();
+        localStorage.setItem(firstKey, firstSeen);
+      }
+
+      // If a referral arrives via URL param, set cookies + localStorage for reliability,
+      // then clean the URL so it still looks professional.
+      if (urlRef) {
+        // set last-touch cookies client-side too (in case redirect/cookies were blocked)
+        document.cookie = `sc_ref_last=${encodeURIComponent(urlRef)}; Max-Age=${60*60*24*45}; Path=/; SameSite=Lax; Secure`;
+        document.cookie = `sc_ref_code=${encodeURIComponent(urlRef)}; Max-Age=${60*60*24*45}; Path=/; SameSite=Lax; Secure`;
+        if (!getCookie("sc_ref_first")) {
+          document.cookie = `sc_ref_first=${encodeURIComponent(urlRef)}; Max-Age=${60*60*24*45}; Path=/; SameSite=Lax; Secure`;
+        }
+        localStorage.setItem("sc_ref_last", urlRef);
+        if (!localStorage.getItem("sc_ref_first")) localStorage.setItem("sc_ref_first", urlRef);
+
+        // remove ?ref=... from address bar
+        params.delete("ref");
+        const clean = location.pathname + (params.toString() ? `?${params.toString()}` : "") + location.hash;
+        history.replaceState({}, "", clean);
+      }
+
+      const refFirst = safeCode(getCookie("sc_ref_first") || localStorage.getItem("sc_ref_first"));
+      const refLast  = safeCode(getCookie("sc_ref_last")  || getCookie("sc_ref_code") || localStorage.getItem("sc_ref_last"));
+      const clickId  = safeCode(getCookie("sc_click_id"));
+
+      const refPill = document.getElementById("refPill");
+      const refText = document.getElementById("refText");
+
+      document.getElementById("fp_ref_code").value = refLast;
+      document.getElementById("fp_ref_first").value = refFirst;
+      document.getElementById("fp_ref_last").value = refLast;
+      document.getElementById("fp_click_id").value = clickId;
+      document.getElementById("fp_landing_url").value = location.href;
+      document.getElementById("fp_first_seen").value = firstSeen;
+
+      if (refLast) {
+        refText.textContent = "Referral applied";
+        show(refPill);
+      }
+    })();
+// --- log lead before Netlify form submit ---
+    (function() {
+      const form = document.getElementById("freePassForm");
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const code = document.getElementById("fp_ref_code").value;
+        const clickId = document.getElementById("fp_click_id").value;
+
+        // best-effort log; do not block submission if it fails
+        try {
+          await fetch("/.netlify/functions/log-lead", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ ref_code: code, ref_last: code, ref_first: document.getElementById("fp_ref_first").value, click_id: clickId })
+          });
+        } catch (err) {}
+
+        // continue with normal Netlify submission + redirect
+        form.submit();
+      });
+    })();
+
+    // --- issue referral link ---
+    async function loadStats(code) {
+      const resp = await fetch(`/.netlify/functions/member-stats?code=${encodeURIComponent(code)}`);
+      const data = await resp.json();
+      if (!data.ok) throw new Error(data.error || "Failed");
+
+      document.getElementById("m_clicks").textContent = String(data.clicks ?? 0);
+      document.getElementById("m_leads").textContent = String(data.leads ?? 0);
+      // Optional: first-touch count for transparency
+      if (data.leads_first && Number(data.leads_first) > 0) {
+        document.getElementById("m_note").textContent = `This link has ${data.leads_first} first-touch referrals.`;
+      }
+      document.getElementById("m_last").textContent = data.last_seen ? new Date(data.last_seen).toLocaleString() : "—";
+      document.getElementById("m_code").textContent = data.code || code;
+      show(document.getElementById("m_kpis"));
+    }
+
+    document.getElementById("m_issue").addEventListener("click", async () => {
+      const name = (document.getElementById("m_name").value || "").trim();
+      const contact = (document.getElementById("m_contact").value || "").trim();
+      const website = (document.getElementById("m_website").value || "").trim();
+      if (!contact) return alert("Enter email or phone.");
+
+      const out = document.getElementById("m_out");
+      const note = document.getElementById("m_note");
+      const linkEl = document.getElementById("m_link");
+      hide(document.getElementById("m_kpis"));
+
+      try {
+        const resp = await fetch("/.netlify/functions/issue-code", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, contact, website })
+        });
+
+        if (!resp.ok) throw new Error(await resp.text());
+        const data = await resp.json();
+
+        const code = safeCode(data.code);
+        const url = `${location.origin}/r/${encodeURIComponent(code)}`;
+
+        linkEl.textContent = url;
+        note.textContent = data.note || "";
+        show(out);
+
+        // load stats
+        try {
+          await loadStats(code);
+        } catch (e) {}
+      } catch (e) {
+        alert("Couldn’t create your link. Please try again in a bit.");
+      }
+    });
+
+    document.getElementById("m_copy").addEventListener("click", async () => {
+      const url = document.getElementById("m_link").textContent.trim();
+      if (url) await copyText(url);
+    });
+
+    document.getElementById("m_share").addEventListener("click", async () => {
+      const url = document.getElementById("m_link").textContent.trim();
+      if (url) await tryShare("Sandcastle Referral", "Claim a free pass:", url);
+    });
+  
+    // --- leaderboard ---
+    let lbSort = "leads";
+
+    const LB_DUMMY = [
+      { name: "Katie M.", leads: 7, clicks: 38, code: "SC-KT7M3Q" },
+      { name: "Jordan P.", leads: 5, clicks: 26, code: "SC-JP4X8N" },
+      { name: "Ava S.", leads: 4, clicks: 19, code: "SC-AV9H2D" },
+      { name: "Member 4F2A", leads: 3, clicks: 14, code: "SC-4F2A8K" },
+      { name: "Noah L.", leads: 2, clicks: 11, code: "SC-NL6Q7R" }
+    ];
+
+    function renderLeaderboard(items, statusText) {
+      const status = document.getElementById("lb_status");
+      const rows = document.getElementById("lb_rows");
+      if (!status || !rows) return;
+
+      status.textContent = statusText || "";
+      rows.innerHTML = "";
+
+      items.forEach((it, idx) => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td style="padding:10px 8px; border-bottom:1px solid rgba(255,255,255,0.10); font-weight:950;">${idx + 1}</td>
+          <td style="padding:10px 8px; border-bottom:1px solid rgba(255,255,255,0.10);">${it.name || "Member"}</td>
+          <td style="padding:10px 8px; border-bottom:1px solid rgba(255,255,255,0.10); font-weight:950;">${it.leads ?? 0}</td>
+          <td style="padding:10px 8px; border-bottom:1px solid rgba(255,255,255,0.10);">${it.clicks ?? 0}</td>
+          <td style="padding:10px 8px; border-bottom:1px solid rgba(255,255,255,0.10); color: rgba(255,255,255,0.78);">${(it.code||"").replace(/^(.{3}).*(.{2})$/, "$1•••$2")}</td>
+        `;
+        rows.appendChild(tr);
+      });
+    }
+
+    // Render placeholders immediately (so the page never looks empty)
+    renderLeaderboard(LB_DUMMY, "Top referrers (example data)");
+    async function fetchLeaderboard() {
+      const status = document.getElementById("lb_status");
+      const rows = document.getElementById("lb_rows");
+      if (!status || !rows) return;
+
+      status.textContent = "Loading…";
+      rows.innerHTML = "";
+
+      try {
+        const resp = await fetch(`/.netlify/functions/leaderboard?sort=${encodeURIComponent(lbSort)}&limit=10`);
+        const data = await resp.json();
+        if (!data.ok) throw new Error(data.error || "Failed");
+
+        const items = data.items || [];
+        if (items.length === 0) {
+          // Keep the placeholders so the board never looks empty on a fresh launch
+          renderLeaderboard(LB_DUMMY, "Top referrers (example data)");
+          return;
+        }
+
+        renderLeaderboard(items, `Showing top ${items.length} (sorted by ${lbSort === "clicks" ? "clicks" : "referrals"})`);
+} catch (e) {
+        status.textContent = "Couldn’t load leaderboard right now.";
+      }
+    }
+
+    const leadsBtn = document.getElementById("lb_sort_leads");
+    const clicksBtn = document.getElementById("lb_sort_clicks");
+    if (leadsBtn && clicksBtn) {
+      leadsBtn.addEventListener("click", () => { lbSort = "leads"; fetchLeaderboard(); });
+      clicksBtn.addEventListener("click", () => { lbSort = "clicks"; fetchLeaderboard(); });
+    }
+
+    // load on page open + refresh occasionally
+    fetchLeaderboard();
+    setInterval(fetchLeaderboard, 30000);
+
+  </script>
+</body>
+</html>
